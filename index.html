@@ -2,9 +2,7 @@
 <html>
 <head>
 	<title>jQuery</title>
-	<link rel="stylesheet" type="text/css" href="style.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-	<script src="script.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<div id="wrapper">
@@ -25,8 +23,9 @@
 				<span>Product Quantity</span> 
 				<input type="text" name="product_quantity" id="product_quantity">
 			</label>
-			<p class="submit">
-				<input type="button" name="add_product" id="add_product" value="Add Product">
+			<p>
+				<input type="button" name="update_product" id="update" class="submit" value="Update Product">
+				<input type="button" name="add_product" id="add_product" class="submit" value="Add Product">
 			</p>
 		</div>
 		<div id="notification">
@@ -36,5 +35,7 @@
 		
 	</div>
 	<div id="product_list"></div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
 </body>
 </html>
