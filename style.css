@@ -64,3 +64,8 @@ body{
 #product_list table th{
 	text-align: left;
 }
+
+#add_product_form #update
+{
+	display: none;
+}
