@@ -9,13 +9,14 @@ $(document).ready(function(){
         var quantity = $("#product_quantity").val();
 
         var product={};
-        product.sku = sku,
-        product.name = name,
-        product.price = price,
-        product.quantity = quantity,
+        product.sku = sku;
+        product.name = name;
+        product.price = price;
+        product.quantity = quantity;
 
         products.push(product);
-        console.log(products);
+
+        console.log("add button clicked");
         clear();
         display();
     });
@@ -23,14 +24,63 @@ $(document).ready(function(){
 
 //function to clear the textboxes once the product is added
 function clear(){
-    $("#add_product_form label input").val(' ');
+    $("#add_product_form label input").val('');
 }
 
 //dynamic function to edit the product
-$('#product_list').on('click','.editProduct',function(){
+$('#product_list').on('click','.editProduct',function(e){
+        e.preventDefault();     //to prevent the page from reloading
+        var pid = $(this).data('pid');
+
+        var temp = getproduct(pid);
+
+        //populating the form
+        $("#product_sku").val(temp.sku);
+        $("#product_name").val(temp.name);
+        $("#product_price").val(temp.price);
+        $("#product_quantity").val(temp.quantity);
+        
+        $('.submit').toggle();  //functionality to hide and show buttons at once by giving separate ids and classes to them and then using it
+});
+
+$('#update').on('click',function(){
+    var sku = $("#product_sku").val();
+    var name = $("#product_name").val();
+    var price = $("#product_price").val();
+    var quantity = $("#product_quantity").val();
+
+    var product={};
+    product.sku = sku;
+    product.name = name;
+    product.price = price;
+    product.quantity = quantity;
+    
+    updateProduct(product);
+    display();
+});
+
+
+function updateProduct(pproduct)
+{
+    for(var i=0;i<products.length;i++)
+    {
+        if(pproduct.sku == products[i].sku)
+            products[i] = pproduct;
+    }
+}
+$('#product_list').on('click','.deleteProduct',function(){
 
 });
 
+//fetch that particular object index from products array
+function getproduct(pid)
+{
+    for(var i=0;i<products.length;i++)
+    {
+        if(products[i].sku==pid)
+            return products[i];
+    }   
+}
 //function to display array in table format
 function display(){
     var html = '';
@@ -44,8 +94,8 @@ function display(){
         <td>'+products[i].price+'</td>\
         <td>'+products[i].quantity+'</td>\
         <td>\
-            <a href="#" class="editProduct" data-pid="'+products[i].sku+'">Edit</a>\
-            <a href="#" class="deleteProduct">Delete</a>\
+            <a href="javascript:void(0);" class="editProduct" data-pid="'+products[i].sku+'">Edit</a>\
+            <a href="javascript:void(0);" class="deleteProduct" data-pid="'+products[i].sku+'">Delete</a>\
         </td>\
         </tr>';
     }
@@ -53,6 +103,5 @@ function display(){
     console.log(products);
     $("#product_list").html(html);
 }
-
 
 
