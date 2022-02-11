@@ -1,0 +1,20 @@
+ <!-- We are using edit class because there will be multiple
+  rows of table data and all of them would be having the same
+   id which is not correc approach -->
+
+   dynamic elements are those which are not defined in html file and are declared
+   inside of js file itself, these elements should lie outside of document.ready(function(){})
+
+   in dynamic function selector we need any element that is static, then using 
+   on() function we trigger the event.
+
+   to edit or delete-
+   1.you need the product id.
+   2.with that id we'll fetch teh object from products array and fill in the from
+   3.change values and update array with that object
+   4.then we'll call display function again
+
+    in jquery we don't pass values like products[i].id aur usko quotes me krke add
+    kar dia , but we use custom variables and use data-nameofvariableinwhichispassed
+
+    
